@@ -1,12 +1,6 @@
 //book objects stored in array
 let myLibrary = []
 
-//get values from input
-let titleValue = document.getElementById('title').value
-let authorValue = document.getElementById('author').value
-let pagesNum = document.getElementById('pages').value
-let haveReadBook = document.getElementById('haveRead').value
-
 function Book(title, author, pages, haveRead) {
   this.title = title
   this.author = author
@@ -14,18 +8,10 @@ function Book(title, author, pages, haveRead) {
   this.haveRead = haveRead
 }
 
-//add new book
-let newBook = new Book(titleValue, authorValue, pagesNum, haveReadBook)
-
-//push to the array
-function addBookToLibrary() {
-  myLibrary.push(newBook)
-}
-
 //table
 let table = document.getElementById('table')
 
-function addBookToArray() {
+function addBookToTable() {
   //Table with books
   let tableRow = document.createElement('tr')
   table.appendChild(tableRow)
@@ -48,12 +34,22 @@ function addBookToArray() {
 
 //add new book on button click
 document.querySelector('.addToTheList').addEventListener('click', function () {
-  addBookToLibrary()
-  addBookToArray()
+  //get values from input
+  let titleValue = document.getElementById('title').value
+  let authorValue = document.getElementById('author').value
+  let pagesNum = document.getElementById('pages').value
+  let haveReadBook = document.getElementById('haveRead').value
+  //add new book
+  let newBook = new Book(titleValue, authorValue, pagesNum, haveReadBook)
+
+  addBookToTable()
+
+  // push a book to array
+  myLibrary.push(newBook)
+
+  //close the modal
   modal.classList.toggle('show-modal')
 })
-
-console.log(myLibrary)
 
 //open the modal
 let modal = document.querySelector('.modal-form')

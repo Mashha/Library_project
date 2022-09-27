@@ -21,10 +21,10 @@
         <input type="text" id="author" name="author" required />
 
         <label for="pages">Pages</label>
-        <input type="number" id="pages" name="pages" min="0" />
+        <input type="number" id="pages" name="pages" min="0" required/>
 
         <label for="haveRead">Have read?</label>
-        <select name="haveRead" id="haveRead">
+        <select name="haveRead" id="haveRead" required>
           <option value="Yes">Yes</option>
           <option value="No">No</option>
         </select>
@@ -32,6 +32,8 @@
         <button class="addToTheList">Add</button>
       </div>
     </div>
+
+
     <!--Table-->
 
     <table id="table">
@@ -43,7 +45,12 @@
       </tr>
     </table>
 
+    <!-- button to pop up modal -->
     <button class="addNewBook">+</button>
+
+    <!-- button to clear all -->
+<button class="clear-all">Clear all</button>
+
 
     <script src="script.js"></script>
   </body>
