@@ -1,12 +1,5 @@
 //book objects stored in array
-let myLibrary = [
-  {
-    title: "Harry Potter and the Philosopher's stone",
-    author: 'J.K.Rowling',
-    pages: 223,
-    haveRead: 'Read',
-  },
-]
+let myLibrary = []
 
 //get values from input
 let titleValue = document.getElementById('title').value
@@ -32,45 +25,42 @@ function addBookToLibrary() {
 //table
 let table = document.getElementById('table')
 
-// loops through the array and display each book
-function loopThroughTheArray() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    //Table with books
-    let tableRow = document.createElement('tr')
-    table.appendChild(tableRow)
+function addBookToArray() {
+  //Table with books
+  let tableRow = document.createElement('tr')
+  table.appendChild(tableRow)
 
-    let tableTitle = document.createElement('td')
-    let tableAuthor = document.createElement('td')
-    let tablePages = document.createElement('td')
-    let tableHaveRead = document.createElement('td')
+  let tableTitle = document.createElement('td')
+  let tableAuthor = document.createElement('td')
+  let tablePages = document.createElement('td')
+  let tableHaveRead = document.createElement('td')
 
-    tableTitle.textContent = myLibrary[i].title
-    tableAuthor.textContent = myLibrary[i].author
-    tablePages.textContent = myLibrary[i].pages
-    tableHaveRead.textContent = myLibrary[i].haveRead
+  tableTitle.textContent = title.value
+  tableAuthor.textContent = author.value
+  tablePages.textContent = pages.value
+  tableHaveRead.textContent = haveRead.value
 
-    tableRow.appendChild(tableTitle)
-    tableRow.appendChild(tableAuthor)
-    tableRow.appendChild(tablePages)
-    tableRow.appendChild(tableHaveRead)
-  }
+  tableRow.appendChild(tableTitle)
+  tableRow.appendChild(tableAuthor)
+  tableRow.appendChild(tablePages)
+  tableRow.appendChild(tableHaveRead)
 }
 
+//add new book on button click
+document.querySelector('.addToTheList').addEventListener('click', function () {
+  addBookToLibrary()
+  addBookToArray()
+  modal.classList.toggle('show-modal')
+})
 
-loopThroughTheArray()
-addBookToLibrary()
 console.log(myLibrary)
 
+//open the modal
+let modal = document.querySelector('.modal-form')
 
-//open the modal 
-let modal = document.querySelector(".modal-form")
-
-document.querySelector(".addNewBook").addEventListener("click", showModalForm)
-document.querySelector(".close").addEventListener("click", showModalForm)
-
+document.querySelector('.addNewBook').addEventListener('click', showModalForm)
+document.querySelector('.close').addEventListener('click', showModalForm)
 
 function showModalForm() {
-  modal.classList.toggle("show-modal")
+  modal.classList.toggle('show-modal')
 }
-
-
