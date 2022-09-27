@@ -1,40 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Library project</title>
-</head>
-<body>
-    <label for="title">Title:</label>
-    <input type="text" id="title" name="title" required>
+  </head>
+  <body>
+    <div class="modal-form">
+      <div class="modal-inner">
+        <div class="modal-inner-top">
+          <h1>Add new book</h1>
+          <span class="close">X</span>
+        </div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required />
 
-    <label for="author">Author:</label>
-    <input type="text" id="author" name="author" required>
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" required />
 
-    <label for="pages">Pages</label>
-    <input type="number" id="pages" name="pages" min="0">
+        <label for="pages">Pages</label>
+        <input type="number" id="pages" name="pages" min="0" />
 
-    <label for="haveRead">Have read?</label>
-    <select name="haveRead" id="haveRead">
-        <option value="Read">Read</option>
-        <option value="Not read">Not read</option>
-    </select>
+        <label for="haveRead">Have read?</label>
+        <select name="haveRead" id="haveRead">
+          <option value="Read">Yes</option>
+          <option value="Not read">No</option>
+        </select>
 
+        <button class="addToTheList">Add</button>
+      </div>
+    </div>
     <!--Table-->
-    
-       <table id="table">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Pages</th>
-            <th>Status</th>
-        </tr>
-       </table>
-    
+
+    <table id="table">
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Status</th>
+      </tr>
+    </table>
+
+    <button class="addNewBook">+</button>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

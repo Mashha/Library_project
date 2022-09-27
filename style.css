@@ -1,13 +1,50 @@
+@import "reset.css";
+
 body {
     padding: 0;
     margin: 0;
     height: 100vh;
     width: 100%;
+    position: relative;
+    
 }
 
-div {
-    width: 200px;
-    height: 200px;
+
+.modal-form {
+    position: fixed;
+    top: 30%;
+    left: 45%;
+    z-index: 100;
     border: 1px solid black;
+    display: none;
+    width: 250px;
 }
 
+.modal-inner {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+input, select {
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+.modal-inner-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.show-modal {
+    display: block;
+
+}
+
+.close {
+    cursor: pointer;
+}
