@@ -16,6 +16,8 @@ function addBookToTable() {
   let tableRow = document.createElement('tr')
   table.appendChild(tableRow)
 
+  tableRow.classList.add("row")
+
   let tableTitle = document.createElement('td')
   let tableAuthor = document.createElement('td')
   let tablePages = document.createElement('td')
@@ -49,6 +51,7 @@ document.querySelector('.addToTheList').addEventListener('click', function () {
 
   //close the modal
   modal.classList.toggle('show-modal')
+
 })
 
 //open the modal
@@ -60,3 +63,17 @@ document.querySelector('.close').addEventListener('click', showModalForm)
 function showModalForm() {
   modal.classList.toggle('show-modal')
 }
+
+//clear the table and array
+let clearAll = document.querySelector(".clear-all");
+
+clearAll.addEventListener("click", ()=> {
+  //remove items from array
+  myLibrary.splice(0, myLibrary.length)
+
+  //remove objects from the list
+  let rowItem = document.querySelectorAll(".row")
+  rowItem.forEach(item => {
+    item.remove()
+  })
+})
