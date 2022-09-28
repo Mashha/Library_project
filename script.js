@@ -27,7 +27,6 @@ function addBookToTable() {
   tableTitle.textContent = title.value
   tableAuthor.textContent = author.value
   tablePages.textContent = pages.value
-  tableHaveRead.textContent = haveRead.value
   removeBook.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
 
   tableRow.appendChild(tableTitle)
@@ -41,6 +40,14 @@ function addBookToTable() {
     this.parentElement.remove()
     myLibrary.splice(0, 1)
   })
+
+  //add button to haveRead
+  let checkBox = document.getElementById('haveRead')
+  if (checkBox.checked == true) {
+    tableHaveRead.innerHTML = '<i class="fa-solid fa-check"></i>'
+  } else {
+    tableHaveRead.innerHTML = '<i class="fa-solid fa-x"></i>'
+  }
 }
 
 //add new book on button click
