@@ -22,16 +22,25 @@ function addBookToTable() {
   let tableAuthor = document.createElement('td')
   let tablePages = document.createElement('td')
   let tableHaveRead = document.createElement('td')
+  let removeBook = document.createElement('button')
 
   tableTitle.textContent = title.value
   tableAuthor.textContent = author.value
   tablePages.textContent = pages.value
   tableHaveRead.textContent = haveRead.value
+  removeBook.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
 
   tableRow.appendChild(tableTitle)
   tableRow.appendChild(tableAuthor)
   tableRow.appendChild(tablePages)
   tableRow.appendChild(tableHaveRead)
+  tableRow.appendChild(removeBook)
+
+  //remove books one by one
+  removeBook.addEventListener('click', function () {
+    this.parentElement.remove()
+    myLibrary.splice(0, 1)
+  })
 }
 
 //add new book on button click
