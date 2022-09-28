@@ -26,6 +26,11 @@ body {
     padding: 20px;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 input, select {
     margin-bottom: 10px;
 }
