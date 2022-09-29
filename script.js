@@ -1,11 +1,12 @@
 //book objects stored in array
 let myLibrary = []
 
-function Book(title, author, pages, haveRead) {
+function Book(title, author, pages, haveRead, id) {
   this.title = title
   this.author = author
   this.pages = pages
   this.haveRead = haveRead
+  this.id = id
 }
 
 //table
@@ -17,6 +18,7 @@ function addBookToTable() {
   table.appendChild(tableRow)
 
   tableRow.classList.add('row')
+  tableRow.id = `${Date.now()}`
 
   let tableTitle = document.createElement('td')
   let tableAuthor = document.createElement('td')
@@ -35,12 +37,6 @@ function addBookToTable() {
   tableRow.appendChild(tableHaveRead)
   tableRow.appendChild(removeBook)
 
-  //remove books one by one
-  removeBook.addEventListener('click', function () {
-    this.parentElement.remove()
-    myLibrary.splice(0, 1)
-  })
-
   //add button to haveRead
   let checkBox = document.getElementById('haveRead')
   if (checkBox.checked == true) {
@@ -48,6 +44,14 @@ function addBookToTable() {
   } else {
     tableHaveRead.innerHTML = '<i class="fa-solid fa-x"></i>'
   }
+
+  //remove books from library and table one by one
+  removeBook.addEventListener('click', function (book) {
+    myLibrary = myLibrary.filter((book) => book.id !== this.parentElement.id)
+    if (book.id === Object.id) {
+      this.parentElement.remove()
+    }
+  })
 }
 
 //add new book on button click
@@ -57,8 +61,15 @@ document.querySelector('.addToTheList').addEventListener('click', function () {
   let authorValue = document.getElementById('author').value
   let pagesNum = document.getElementById('pages').value
   let haveReadBook = document.getElementById('haveRead').value
+  let idValue = `${Date.now()}`
   //add new book
-  let newBook = new Book(titleValue, authorValue, pagesNum, haveReadBook)
+  let newBook = new Book(
+    titleValue,
+    authorValue,
+    pagesNum,
+    haveReadBook,
+    idValue,
+  )
 
   addBookToTable()
 
