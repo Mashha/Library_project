@@ -29,7 +29,7 @@ function addBookToTable() {
   tableTitle.textContent = title.value
   tableAuthor.textContent = author.value
   tablePages.textContent = pages.value
-  removeBook.innerHTML = '<i class="fa-regular fa-trash-can"></i>'
+  removeBook.classList.add('fa-regular', 'fa-trash-can')
 
   tableRow.appendChild(tableTitle)
   tableRow.appendChild(tableAuthor)
@@ -39,11 +39,30 @@ function addBookToTable() {
 
   //add button to haveRead
   let checkBox = document.getElementById('haveRead')
-  if (checkBox.checked == true) {
+  if (checkBox.checked === true) {
     tableHaveRead.innerHTML = '<i class="fa-solid fa-check"></i>'
   } else {
     tableHaveRead.innerHTML = '<i class="fa-solid fa-x"></i>'
   }
+
+  // change status of have read
+  tableHaveRead.addEventListener('click', function () {
+    if (this.innerHTML === '<i class="fa-solid fa-check"></i>') {
+      this.innerHTML = '<i class="fa-solid fa-x"></i>'
+      myLibrary.forEach(function (item) {
+        if (tableRow.id === item.id) {
+          item.haveRead = false
+        }
+      })
+    } else {
+      this.innerHTML = '<i class="fa-solid fa-check"></i>'
+      myLibrary.forEach(function (item) {
+        if (tableRow.id === item.id) {
+          item.haveRead = true
+        }
+      })
+    }
+  })
 
   //remove books from library and table one by one
   removeBook.addEventListener('click', function (book) {
@@ -60,7 +79,8 @@ document.querySelector('.addToTheList').addEventListener('click', function () {
   let titleValue = document.getElementById('title').value
   let authorValue = document.getElementById('author').value
   let pagesNum = document.getElementById('pages').value
-  let haveReadBook = document.getElementById('haveRead').value
+  let haveReadBook = document.getElementById('haveRead').checked
+
   let idValue = `${Date.now()}`
   //add new book
   let newBook = new Book(
@@ -71,7 +91,7 @@ document.querySelector('.addToTheList').addEventListener('click', function () {
     idValue,
   )
 
-  addBookToTable()
+  addBookToTable(newBook)
 
   // push a book to array
   myLibrary.push(newBook)
