@@ -37,7 +37,7 @@ function addBookToTable() {
   tableRow.appendChild(tableHaveRead)
   tableRow.appendChild(removeBook)
 
-  //add button to haveRead
+  //add icon to haveRead
   let checkBox = document.getElementById('haveRead')
   if (checkBox.checked === true) {
     tableHaveRead.innerHTML = '<i class="fa-solid fa-check"></i>'
@@ -74,7 +74,10 @@ function addBookToTable() {
 }
 
 //add new book on button click
-document.querySelector('.addToTheList').addEventListener('click', function () {
+document.querySelector('form').addEventListener('submit', function (e) {
+  //prevent from submitting
+  e.preventDefault()
+
   //get values from input
   let titleValue = document.getElementById('title').value
   let authorValue = document.getElementById('author').value
@@ -105,7 +108,7 @@ document.querySelector('.addToTheList').addEventListener('click', function () {
   })
 })
 
-//open the modal
+//open/close the modal
 let modal = document.querySelector('.modal-form')
 
 document.querySelector('.addNewBook').addEventListener('click', showModalForm)
