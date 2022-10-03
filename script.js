@@ -9,55 +9,56 @@ function Book(title, author, pages, haveRead, id) {
   this.id = id
 }
 
-//table
-let table = document.getElementById('table')
+//div card
+let main = document.querySelector('.main-inner')
 
 function addBookToTable() {
   //Table with books
-  let tableRow = document.createElement('tr')
-  table.appendChild(tableRow)
+  let bookCard = document.createElement('div')
+  main.appendChild(bookCard)
 
-  tableRow.classList.add('row')
-  tableRow.id = `${Date.now()}`
+  bookCard.classList.add('card')
+  bookCard.id = `${Date.now()}`
 
-  let tableTitle = document.createElement('td')
-  let tableAuthor = document.createElement('td')
-  let tablePages = document.createElement('td')
-  let tableHaveRead = document.createElement('td')
+  
+  let cardTitle = document.createElement('h1')
+  let cardAuthor = document.createElement('h4')
+  let cardPages = document.createElement('p')
+  let cardHaveRead = document.createElement('span')
   let removeBook = document.createElement('button')
 
-  tableTitle.textContent = title.value
-  tableAuthor.textContent = author.value
-  tablePages.textContent = pages.value
+  cardTitle.textContent = title.value
+  cardAuthor.textContent = author.value
+  cardPages.textContent = pages.value
   removeBook.classList.add('fa-regular', 'fa-trash-can')
 
-  tableRow.appendChild(tableTitle)
-  tableRow.appendChild(tableAuthor)
-  tableRow.appendChild(tablePages)
-  tableRow.appendChild(tableHaveRead)
-  tableRow.appendChild(removeBook)
+  bookCard.appendChild(cardTitle)
+  bookCard.appendChild(cardAuthor)
+  bookCard.appendChild(cardPages)
+  bookCard.appendChild(cardHaveRead)
+  bookCard.appendChild(removeBook)
 
   //add icon to haveRead
   let checkBox = document.getElementById('haveRead')
   if (checkBox.checked === true) {
-    tableHaveRead.innerHTML = '<i class="fa-solid fa-check"></i>'
+    cardHaveRead.innerHTML = '<i class="fa-solid fa-check"></i>'
   } else {
-    tableHaveRead.innerHTML = '<i class="fa-solid fa-x"></i>'
+    cardHaveRead.innerHTML = '<i class="fa-solid fa-x"></i>'
   }
 
   // change status of have read
-  tableHaveRead.addEventListener('click', function () {
+  cardHaveRead.addEventListener('click', function () {
     if (this.innerHTML === '<i class="fa-solid fa-check"></i>') {
       this.innerHTML = '<i class="fa-solid fa-x"></i>'
       myLibrary.forEach(function (item) {
-        if (tableRow.id === item.id) {
+        if (bookCard.id === item.id) {
           item.haveRead = false
         }
       })
     } else {
       this.innerHTML = '<i class="fa-solid fa-check"></i>'
       myLibrary.forEach(function (item) {
-        if (tableRow.id === item.id) {
+        if (bookCard.id === item.id) {
           item.haveRead = true
         }
       })
@@ -67,7 +68,7 @@ function addBookToTable() {
   //remove books from library and table one by one
   removeBook.addEventListener('click', function (book) {
     myLibrary = myLibrary.filter((book) => book.id !== this.parentElement.id)
-    if (book.id === Object.id) {
+    if (bookCard.id === Object.id) {
       this.parentElement.remove()
     }
   })
@@ -100,7 +101,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
   myLibrary.push(newBook)
 
   //close the modal
-  modal.classList.toggle('show-modal')
+  modal.classList.toggle('active')
 
   //clear the input fields
   document.querySelectorAll('input').forEach((node) => {
@@ -111,11 +112,12 @@ document.querySelector('form').addEventListener('submit', function (e) {
 //open/close the modal
 let modal = document.querySelector('.modal-form')
 
+
 document.querySelector('.addNewBook').addEventListener('click', showModalForm)
 document.querySelector('.close').addEventListener('click', showModalForm)
 
 function showModalForm() {
-  modal.classList.toggle('show-modal')
+  modal.classList.toggle('active')
 }
 
 //clear the table and array
@@ -126,8 +128,8 @@ clearAll.addEventListener('click', () => {
   myLibrary.splice(0, myLibrary.length)
 
   //remove objects from the list
-  let rowItem = document.querySelectorAll('.row')
-  rowItem.forEach((item) => {
+  let cardItem = document.querySelectorAll('.card')
+  cardItem.forEach((item) => {
     item.remove()
   })
 })

@@ -12,76 +12,80 @@
     <title>Library project</title>
   </head>
   <body>
-    <div class="modal-form">
-      <div class="modal-inner">
-        <div class="modal-inner-top">
-          <h1>Add new book</h1>
-          <span class="close">X</span>
-        </div>
-        <form action="/" method="get">
-          <label for="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Title"
-            autocomplete="on"
-            required
-          />
 
-          <label for="author">Author:</label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            placeholder="Author"
-            autocomplete="on"
-            required
-          />
-
-          <label for="pages">Pages</label>
-          <input
-            type="number"
-            id="pages"
-            name="pages"
-            min="0"
-            placeholder="Pages"
-            required
-          />
-
-          <label>
-            I read the book
-            <input
-              type="checkbox"
-              name="haveRead"
-              id="haveRead"
-              value="haveRead"
-            />
-          </label>
-
-          <button type="submit" class="addToTheList">Add</button>
-        </form>
-      </div>
+    <header id="header">
+      <div class="header-inner">
+      <img src="image_books.png" alt="">
+      <h1>welcome to your own personal library</h1>
+      <button>Log in</button>
     </div>
+    </header>
 
-    <!--Table-->
+    <main id="main">
+      <!-- button to pop up modal -->
+<button class="addNewBook">+</button>
+      <div class="main-inner">
 
-    <table id="table">
-      <tr>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Pages</th>
-        <th>Read</th>
-        <th>Remove</th>
-      </tr>
-    </table>
+  
+      </div>
+    </main>
 
-    <!-- button to pop up modal -->
-    <button class="addNewBook">+</button>
-
-    <!-- button to clear all -->
-    <button class="clear-all">Clear all</button>
-
+      <div class="modal-form">
+        <div class="modal-inner">
+          <div class="modal-inner-top">
+            <h1>Add new book</h1>
+            <span class="close">X</span>
+          </div>
+          <form action="/" method="get">
+            <label for="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              placeholder="Title"
+              autocomplete="on"
+              required
+            />
+  
+            <label for="author">Author:</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              placeholder="Author"
+              autocomplete="on"
+              required
+            />
+  
+            <label for="pages">Pages</label>
+            <input
+              type="number"
+              id="pages"
+              name="pages"
+              min="0"
+              placeholder="Pages"
+              required
+            />
+  
+            <label>
+              I read the book
+              <input
+                type="checkbox"
+                name="haveRead"
+                id="haveRead"
+                value="haveRead"
+              />
+            </label>
+  
+            <button type="submit" class="addToTheList">Add</button>
+          </form>
+        </div>
+      </div>
+  
+  
+      <!-- button to clear all -->
+      <button class="clear-all">Clear all</button>
+   
     <script src="script.js"></script>
   </body>
 </html>
