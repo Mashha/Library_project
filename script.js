@@ -20,23 +20,23 @@ function addBookToTable() {
   bookCard.classList.add('card')
   bookCard.id = `${Date.now()}`
 
-  
+  let removeBook = document.createElement('button')
   let cardTitle = document.createElement('h1')
   let cardAuthor = document.createElement('h4')
   let cardPages = document.createElement('p')
   let cardHaveRead = document.createElement('span')
-  let removeBook = document.createElement('button')
 
   cardTitle.textContent = title.value
   cardAuthor.textContent = author.value
-  cardPages.textContent = pages.value
+  cardPages.textContent = `${pages.value} ${'pages'}`
   removeBook.classList.add('fa-regular', 'fa-trash-can')
+  cardHaveRead.textContent = `${'Have read'}`
 
+  bookCard.appendChild(removeBook)
   bookCard.appendChild(cardTitle)
   bookCard.appendChild(cardAuthor)
   bookCard.appendChild(cardPages)
   bookCard.appendChild(cardHaveRead)
-  bookCard.appendChild(removeBook)
 
   //add icon to haveRead
   let checkBox = document.getElementById('haveRead')
@@ -66,7 +66,7 @@ function addBookToTable() {
   })
 
   //remove books from library and table one by one
-  removeBook.addEventListener('click', function (book) {
+  removeBook.addEventListener('click', function (bookCard) {
     myLibrary = myLibrary.filter((book) => book.id !== this.parentElement.id)
     if (bookCard.id === Object.id) {
       this.parentElement.remove()
@@ -111,7 +111,6 @@ document.querySelector('form').addEventListener('submit', function (e) {
 
 //open/close the modal
 let modal = document.querySelector('.modal-form')
-
 
 document.querySelector('.addNewBook').addEventListener('click', showModalForm)
 document.querySelector('.close').addEventListener('click', showModalForm)

@@ -12,80 +12,80 @@
     <title>Library project</title>
   </head>
   <body>
-
     <header id="header">
       <div class="header-inner">
-      <img src="image_books.png" alt="">
-      <h1>welcome to your own personal library</h1>
-      <button>Log in</button>
-    </div>
+        <img id="book-image" src="image_books.png" alt="" />
+        <div class="header-middle">
+          <h1>welcome to your own personal library</h1>
+          <button class="addNewBook">Add book</button>
+        </div>
+        <button id="logIn"><i class="fa-solid fa-right-to-bracket"></i></button>
+      </div>
     </header>
 
     <main id="main">
       <!-- button to pop up modal -->
-<button class="addNewBook">+</button>
-      <div class="main-inner">
 
-  
+      <div class="main-inner">
+        <!-- all the cards go here -->
       </div>
+      <!-- button to clear all -->
+      <button class="clear-all">Clear all</button>
     </main>
 
-      <div class="modal-form">
-        <div class="modal-inner">
-          <div class="modal-inner-top">
-            <h1>Add new book</h1>
-            <span class="close">X</span>
-          </div>
-          <form action="/" method="get">
-            <label for="title">Title:</label>
+    <div class="modal-form">
+      <div class="modal-top">
+        <h1>Add new book</h1>
+        <span class="close"><i class="fa-solid fa-xmark"></i></span>
+      </div>
+      <div class="modal-inner">
+        <form action="/" method="get">
+          <div class="form-title">
             <input
               type="text"
               id="title"
               name="title"
-              placeholder="Title"
-              autocomplete="on"
+              autocomplete="off"
               required
             />
-  
-            <label for="author">Author:</label>
+            <label for="title">
+              <span class="input-name">Title</span>
+            </label>
+          </div>
+          <div class="form-author">
             <input
               type="text"
               id="author"
               name="author"
-              placeholder="Author"
-              autocomplete="on"
+              autocomplete="off"
               required
             />
-  
-            <label for="pages">Pages</label>
-            <input
-              type="number"
-              id="pages"
-              name="pages"
-              min="0"
-              placeholder="Pages"
-              required
-            />
-  
-            <label>
-              I read the book
-              <input
-                type="checkbox"
-                name="haveRead"
-                id="haveRead"
-                value="haveRead"
-              />
+            <label for="author">
+              <span class="input-name">Author</span>
             </label>
-  
-            <button type="submit" class="addToTheList">Add</button>
-          </form>
-        </div>
+          </div>
+          <div class="form-pages">
+            <input type="number" id="pages" name="pages" min="0" required />
+            <label for="pages">
+              <span class="input-name">Pages</span>
+            </label>
+          </div>
+
+          <label>
+            I read the book
+            <input
+              type="checkbox"
+              name="haveRead"
+              id="haveRead"
+              value="haveRead"
+            />
+          </label>
+
+          <button type="submit" class="addToTheList">Add</button>
+        </form>
       </div>
-  
-  
-      <!-- button to clear all -->
-      <button class="clear-all">Clear all</button>
-   
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>
