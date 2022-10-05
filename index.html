@@ -12,26 +12,33 @@
     <title>Library project</title>
   </head>
   <body>
-    <header id="header">
-      <div class="header-inner">
-        <img id="book-image" src="images/image_books.png" alt="Stack of books" />
-        <div class="header-middle">
-          <h1>welcome to your own personal library</h1>
-          <button class="addNewBook">Add book</button>
+    <div class="wrapper">
+      <header id="header">
+        <div class="header-inner">
+          <img
+            id="book-image"
+            src="images/image_books.png"
+            alt="Stack of books"
+          />
+          <div class="header-middle">
+            <h1>welcome to your own personal library</h1>
+            <button class="addNewBook">Add book</button>
+          </div>
+          <button id="logIn">
+            <i class="fa-solid fa-right-to-bracket"></i>
+          </button>
         </div>
-        <button id="logIn"><i class="fa-solid fa-right-to-bracket"></i></button>
-      </div>
-    </header>
+      </header>
 
-    <main id="main">
-      <!-- button to pop up modal -->
-      <div class="main-inner">
-        <!-- all the cards go here -->
-      </div>
-      <!-- button to clear all -->
-      <button class="clear-all">Clear all</button>
-    </main>
-
+      <main id="main">
+        <!-- button to pop up modal -->
+        <div class="main-inner">
+          <!-- all the cards go here -->
+        </div>
+        <!-- button to clear all -->
+        <button class="clear-all">Clear all</button>
+      </main>
+    </div>
     <div class="modal-form">
       <div class="modal-top">
         <h1>Add new book</h1>
@@ -94,8 +101,6 @@
         </form>
       </div>
     </div>
-
-    <div class="background-blur"></div>
 
     <script src="script.js"></script>
   </body>

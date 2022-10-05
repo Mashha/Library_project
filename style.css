@@ -76,9 +76,10 @@ body {
 
 #main {
   display: grid;
-  height: calc(100vh - 132px);
+  height: calc(100vh - 101px);
   padding: 20px;
 }
+
 
 .main-inner {
   width: 100%;
@@ -238,10 +239,6 @@ input[type='checkbox'] {
   padding: 20px 20px 0 20px;
 }
 
-.modal-form.active {
-  visibility: visible;
-  transform: scale(1);
-}
 
 .addToTheList {
   border: none;
@@ -285,3 +282,16 @@ span {
 .fa-xmark {
   font-size: 25px;
 }
+
+/* active class */
+.modal-form.active {
+    visibility: visible;
+    transform: scale(1);
+  }
+  
+  /* blur class */
+  .blur {
+      filter: blur(2px);
+      pointer-events: none;
+      user-select: none;
+  }
