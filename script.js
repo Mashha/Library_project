@@ -55,7 +55,7 @@ function addBookToTable() {
   //add image 
   let imageBookForCard = document.getElementById("imgUrl").value
   if(imageBookForCard === "") {
-    cardBookImg.setAttribute("src", "mock_cover.svg")
+    cardBookImg.setAttribute("src", "images/mock_cover.svg")
   } else {
     cardBookImg.setAttribute("src", imageBookForCard)
   }
