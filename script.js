@@ -18,11 +18,13 @@ function addBookToTable() {
   let bookCard = document.createElement('div')
   let bookCardLeft = document.createElement('div')
   let bookCardRight = document.createElement('div')
+  let statusDetails = document.createElement("div")
 
   // main, left and right part
   main.appendChild(bookCard)
   bookCard.appendChild(bookCardLeft)
   bookCard.appendChild(bookCardRight)
+  
 
   bookCard.classList.add('card')
   bookCardLeft.classList.add('card-left')
@@ -35,19 +37,24 @@ function addBookToTable() {
   let cardPages = document.createElement('p')
   let cardHaveRead = document.createElement('span')
   let cardBookImg = document.createElement('img')
+  let status = document.createElement("span")
 
-  cardBookImg.classList.add('imageOfBook')
 
   cardTitle.textContent = title.value
   cardAuthor.textContent = author.value
   cardPages.textContent = `${pages.value} ${'pages'}`
   removeBook.classList.add('fa-regular', 'fa-trash-can')
+  cardBookImg.classList.add('imageOfBook')
+  status.textContent = "Have read "
+
+  statusDetails.appendChild(status)
+  statusDetails.appendChild(cardHaveRead)
 
   bookCardRight.appendChild(removeBook)
   bookCardRight.appendChild(cardTitle)
   bookCardRight.appendChild(cardAuthor)
   bookCardRight.appendChild(cardPages)
-  bookCardRight.appendChild(cardHaveRead)
+  bookCardRight.appendChild(statusDetails)
   bookCardLeft.appendChild(cardBookImg)
 
   //add image
