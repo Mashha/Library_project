@@ -8,8 +8,14 @@
 :root {
   --primary-bg-color: #2c4287;
   --primary-text-color: #f4cdb0;
-
+  --light: #fff;
   --icon-color-red: #b62707;
+  --background: var(--light);
+}
+
+.dark_mode {
+    --dark: #333;
+    --background: var(--dark);
 }
 
 body {
@@ -18,6 +24,7 @@ body {
   height: 100vh;
   width: 100%;
   font-family: 'read', sans-serif;
+  background-color: var(--background);
 }
 
 #header {
@@ -102,6 +109,7 @@ body {
   display: grid;
   grid-template-columns: 0.8fr 1.2fr;
   border-radius: 10px;
+  background-color: var(--light);
 }
 
 .imageOfBook {
@@ -281,6 +289,14 @@ span {
 
 .fa-xmark {
   font-size: 25px;
+}
+
+.toggleDark  {
+    background: transparent;
+    border: none;
+    color: #f4cdb0;
+    font-size: 25px;
+    cursor: pointer;
 }
 
 /* active class */

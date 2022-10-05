@@ -159,3 +159,18 @@ clearAll.addEventListener('click', () => {
     item.remove()
   })
 })
+
+
+//added light/dark body background
+let toggle = document.querySelector(".toggleDark")
+
+toggle.addEventListener("click", ()=> {
+  
+    document.body.classList.toggle("dark_mode")
+  if(document.body.classList.contains("dark_mode")) {
+   toggle.innerHTML = '<i class="fa-solid fa-sun"></i>'
+  } else {
+    toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'
+  }
+  
+})
