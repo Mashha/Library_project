@@ -1,11 +1,12 @@
 //book objects stored in array
 let myLibrary = []
 
-function Book(title, author, pages, haveRead, id) {
+function Book(title, author, pages, haveRead, bookImg, id) {
   this.title = title
   this.author = author
   this.pages = pages
   this.haveRead = haveRead
+  this.bookImg = bookImg
   this.id = id
 }
 
@@ -25,18 +26,23 @@ function addBookToTable() {
   let cardAuthor = document.createElement('h4')
   let cardPages = document.createElement('p')
   let cardHaveRead = document.createElement('span')
+  let cardBookImg = document.createElement("img")
 
+
+  
   cardTitle.textContent = title.value
   cardAuthor.textContent = author.value
   cardPages.textContent = `${pages.value} ${'pages'}`
   removeBook.classList.add('fa-regular', 'fa-trash-can')
-  cardHaveRead.textContent = `${'Have read'}`
+  cardBookImg.setAttribute("src", `${bookImg.value}`)
 
+  
   bookCard.appendChild(removeBook)
   bookCard.appendChild(cardTitle)
   bookCard.appendChild(cardAuthor)
   bookCard.appendChild(cardPages)
   bookCard.appendChild(cardHaveRead)
+  bookCard.appendChild(cardBookImg)
 
   //add icon to haveRead
   let checkBox = document.getElementById('haveRead')
@@ -84,6 +90,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
   let authorValue = document.getElementById('author').value
   let pagesNum = document.getElementById('pages').value
   let haveReadBook = document.getElementById('haveRead').checked
+  let bookUrl = document.getElementById("img-url").value
 
   let idValue = `${Date.now()}`
   //add new book
@@ -92,6 +99,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     authorValue,
     pagesNum,
     haveReadBook,
+    bookUrl,
     idValue,
   )
 

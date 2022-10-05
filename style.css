@@ -137,7 +137,8 @@ form input {
 
 .form-title,
 .form-author,
-.form-pages {
+.form-pages,
+.form-img {
   position: relative;
 }
 
