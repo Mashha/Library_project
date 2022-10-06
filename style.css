@@ -14,8 +14,8 @@
 }
 
 .dark_mode {
-    --dark: #333;
-    --background: var(--dark);
+  --dark: #333;
+  --background: var(--dark);
 }
 
 body {
@@ -46,6 +46,7 @@ body {
   font-size: 25px;
   text-transform: uppercase;
   color: var(--primary-text-color);
+  text-align: center;
 }
 
 .header-middle {
@@ -87,11 +88,10 @@ body {
   padding: 20px;
 }
 
-
 .main-inner {
   width: 100%;
   width: 80%;
-  margin: auto;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 20px;
@@ -247,7 +247,6 @@ input[type='checkbox'] {
   padding: 20px 20px 0 20px;
 }
 
-
 .addToTheList {
   border: none;
   border-radius: 10px;
@@ -292,28 +291,67 @@ span {
 }
 
 .editDeleteStatus {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
-
-.toggleDark  {
-    background: transparent;
-    border: none;
-    color: #f4cdb0;
-    font-size: 25px;
-    cursor: pointer;
+.toggleDark {
+  background: transparent;
+  border: none;
+  color: #f4cdb0;
+  font-size: 25px;
+  cursor: pointer;
 }
 
 /* active class */
 .modal-form.active {
-    visibility: visible;
-    transform: scale(1);
+  visibility: visible;
+  transform: scale(1);
+}
+
+/* blur class */
+.blur {
+  filter: blur(2px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* media queries */
+
+@media (max-width: 800px) {
+  .header-inner h1 {
+    font-size: 20px;
   }
-  
-  /* blur class */
-  .blur {
-      filter: blur(2px);
-      pointer-events: none;
-      user-select: none;
+  .modal-form {
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: auto;
   }
+}
+
+@media (max-width: 480px) {
+  #book-image {
+    width: 100px;
+  }
+  .header-inner {
+    flex-direction: column;
+    gap: 10px;
+  }
+  #main {
+    padding: 10px 5px;
+  }
+  .modal-form {
+    top: 30%;
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+  .main-inner {
+    width: 100%;
+    margin: 0;
+    grid-gap: 10px;
+    justify-items: center;
+  }
+}
