@@ -18,18 +18,19 @@ function addBookToTable() {
   let bookCard = document.createElement('div')
   let bookCardLeft = document.createElement('div')
   let bookCardRight = document.createElement('div')
-  let statusDetails = document.createElement("div")
+  let statusDetails = document.createElement('div')
+  let editDeleteStatus = document.createElement('div')
 
   // main, left and right part
   main.appendChild(bookCard)
   bookCard.appendChild(bookCardLeft)
   bookCard.appendChild(bookCardRight)
-  
 
   bookCard.classList.add('card')
   bookCardLeft.classList.add('card-left')
   bookCardRight.classList.add('card-right')
   bookCard.id = `${Date.now()}`
+  editDeleteStatus.classList.add('editDeleteStatus')
 
   let removeBook = document.createElement('button')
   let cardTitle = document.createElement('h1')
@@ -37,20 +38,24 @@ function addBookToTable() {
   let cardPages = document.createElement('p')
   let cardHaveRead = document.createElement('span')
   let cardBookImg = document.createElement('img')
-  let status = document.createElement("span")
-
+  let status = document.createElement('span')
+  let editBook = document.createElement('span')
 
   cardTitle.textContent = title.value
   cardAuthor.textContent = author.value
   cardPages.textContent = `${pages.value} ${'pages'}`
   removeBook.classList.add('fa-regular', 'fa-trash-can')
   cardBookImg.classList.add('imageOfBook')
-  status.textContent = "Have read "
+  status.textContent = 'Have read '
+  editBook.classList.add('fa-solid', 'fa-pen-to-square')
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
 
-  bookCardRight.appendChild(removeBook)
+  editDeleteStatus.appendChild(editBook)
+  editDeleteStatus.appendChild(removeBook)
+
+  bookCardRight.appendChild(editDeleteStatus)
   bookCardRight.appendChild(cardTitle)
   bookCardRight.appendChild(cardAuthor)
   bookCardRight.appendChild(cardPages)
@@ -90,6 +95,12 @@ function addBookToTable() {
         }
       })
     }
+  })
+
+
+ // edit book card 
+  editBook.addEventListener("click", function() {
+  //
   })
 
   //remove books from library and table one by one
@@ -167,17 +178,14 @@ clearAll.addEventListener('click', () => {
   })
 })
 
-
 //added light/dark body background
-let toggle = document.querySelector(".toggleDark")
+let toggle = document.querySelector('.toggleDark')
 
-toggle.addEventListener("click", ()=> {
-  
-    document.body.classList.toggle("dark_mode")
-  if(document.body.classList.contains("dark_mode")) {
-   toggle.innerHTML = '<i class="fa-solid fa-sun"></i>'
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark_mode')
+  if (document.body.classList.contains('dark_mode')) {
+    toggle.innerHTML = '<i class="fa-solid fa-sun"></i>'
   } else {
     toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'
   }
-  
 })

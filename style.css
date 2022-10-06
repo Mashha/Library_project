@@ -291,6 +291,12 @@ span {
   font-size: 25px;
 }
 
+.editDeleteStatus {
+    display: flex;
+    justify-content: space-between;
+}
+
+
 .toggleDark  {
     background: transparent;
     border: none;
