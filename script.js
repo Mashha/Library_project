@@ -97,9 +97,8 @@ function addBookToTable() {
     }
   })
 
-
- // edit book card 
-  editBook.addEventListener("click", function() {
+  // edit book card
+  editBook.addEventListener('click', function () {
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
   })
@@ -107,7 +106,8 @@ function addBookToTable() {
   //remove books from library and table one by one
   removeBook.addEventListener('click', function (bookCard) {
     myLibrary = myLibrary.filter(
-      (bookCard) => bookCard.id !== this.parentElement.parentElement.parentElement.id,
+      (bookCard) =>
+        bookCard.id !== this.parentElement.parentElement.parentElement.id,
     )
     if (bookCard.id === Object.id) {
       this.parentElement.parentElement.parentElement.remove()
