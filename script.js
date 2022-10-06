@@ -100,7 +100,8 @@ function addBookToTable() {
 
  // edit book card 
   editBook.addEventListener("click", function() {
-  //
+    modal.classList.toggle('active')
+    wrapper.classList.toggle('blur')
   })
 
   //remove books from library and table one by one
@@ -109,6 +110,7 @@ function addBookToTable() {
       (bookCard) => bookCard.id !== this.parentElement.parentElement.id,
     )
     if (bookCard.id === Object.id) {
+      console.log(this.parentElement)
       this.parentElement.parentElement.remove()
     }
   })
