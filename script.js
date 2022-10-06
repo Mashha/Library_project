@@ -107,11 +107,10 @@ function addBookToTable() {
   //remove books from library and table one by one
   removeBook.addEventListener('click', function (bookCard) {
     myLibrary = myLibrary.filter(
-      (bookCard) => bookCard.id !== this.parentElement.parentElement.id,
+      (bookCard) => bookCard.id !== this.parentElement.parentElement.parentElement.id,
     )
     if (bookCard.id === Object.id) {
-      console.log(this.parentElement)
-      this.parentElement.parentElement.remove()
+      this.parentElement.parentElement.parentElement.remove()
     }
   })
 }
