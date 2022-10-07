@@ -319,6 +319,10 @@ footer p {
   color: var(--primary-text-color);
 }
 
+.no-button {
+  display: none;
+}
+
 /* active class */
 .modal-form.active {
   visibility: visible;

@@ -13,7 +13,7 @@ function Book(title, author, pages, haveRead, bookImg, id) {
 //div card
 let main = document.querySelector('.main-inner')
 
-function addBookToTable() {
+function addBookToCard() {
   //card with books
   let bookCard = document.createElement('div')
   let bookCardLeft = document.createElement('div')
@@ -97,10 +97,20 @@ function addBookToTable() {
     }
   })
 
-  // edit book card
-  editBook.addEventListener('click', function () {
+  // edit the form
+  editBook.addEventListener('click', function (e) {
+    document.getElementById('title').value =
+      e.target.parentElement.nextSibling.textContent
+    document.getElementById('author').value =
+      e.target.parentElement.nextSibling.textContent
+    document.getElementById('pages').value =
+      e.target.parentElement.nextSibling.textContent
+    document.getElementById('haveRead').checked
+
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
+    addEditedCard.classList.remove('no-button')
+    addToTheList.classList.add('no-button')
   })
 
   //remove books from library and table one by one
@@ -138,7 +148,7 @@ document.querySelector('form').addEventListener('submit', function (e) {
     idValue,
   )
 
-  addBookToTable(newBook)
+  addBookToCard(newBook)
 
   // push a book to array
   myLibrary.push(newBook)
@@ -156,8 +166,13 @@ document.querySelector('form').addEventListener('submit', function (e) {
 //open/close the modal
 let modal = document.querySelector('.modal-form')
 let wrapper = document.querySelector('.wrapper')
+let addEditedCard = document.querySelector('.edit_the_card')
+let addToTheList = document.querySelector('.addToTheList')
 
-document.querySelector('.addNewBook').addEventListener('click', showModalForm)
+document.querySelector('.addNewBook').addEventListener('click', () => {
+  addEditedCard.classList.add('no-button')
+  showModalForm()
+})
 document.querySelector('.close').addEventListener('click', showModalForm)
 
 function showModalForm() {
@@ -166,18 +181,18 @@ function showModalForm() {
 }
 
 //clear the table and array
-let clearAll = document.querySelector('.clear-all')
+// let clearAll = document.querySelector('.clear-all')
 
-clearAll.addEventListener('click', () => {
-  //remove items from array
-  myLibrary.splice(0, myLibrary.length)
+// clearAll.addEventListener('click', () => {
+//   //remove items from array
+//   myLibrary.splice(0, myLibrary.length)
 
-  //remove objects from the list
-  let cardItem = document.querySelectorAll('.card')
-  cardItem.forEach((item) => {
-    item.remove()
-  })
-})
+//   //remove objects from the list
+//   let cardItem = document.querySelectorAll('.card')
+//   cardItem.forEach((item) => {
+//     item.remove()
+//   })
+// })
 
 //added light/dark body background
 let toggle = document.querySelector('.toggleDark')
@@ -190,3 +205,6 @@ toggle.addEventListener('click', () => {
     toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'
   }
 })
+
+// add edited form to card
+addEditedCard.addEventListener('click', function () {})
