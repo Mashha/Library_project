@@ -14,7 +14,7 @@ function Book(title, author, pages, haveRead, bookImg, id) {
 let main = document.querySelector('.main-inner')
 
 function addBookToCard() {
-  //card with books
+  //cards with books
   let bookCard = document.createElement('div')
   let bookCardLeft = document.createElement('div')
   let bookCardRight = document.createElement('div')
@@ -41,13 +41,19 @@ function addBookToCard() {
   let status = document.createElement('span')
   let editBook = document.createElement('span')
 
+  //added classes
+  cardTitle.classList.add('cardTitleClass')
+  cardAuthor.classList.add('cardAuthorClass')
+  cardPages.classList.add('cardPagesClass')
+
   cardTitle.textContent = title.value
   cardAuthor.textContent = author.value
-  cardPages.textContent = `${pages.value} ${'pages'}`
+  cardPages.textContent = pages.value
   removeBook.classList.add('fa-regular', 'fa-trash-can')
   cardBookImg.classList.add('imageOfBook')
   status.textContent = 'Have read '
   editBook.classList.add('fa-solid', 'fa-pen-to-square')
+  editBook.id = `${Date.now()}`
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
@@ -98,19 +104,30 @@ function addBookToCard() {
   })
 
   // edit the form
-  editBook.addEventListener('click', function (e) {
-    document.getElementById('title').value =
-      e.target.parentElement.nextSibling.textContent
-    document.getElementById('author').value =
-      e.target.parentElement.nextSibling.textContent
-    document.getElementById('pages').value =
-      e.target.parentElement.nextSibling.textContent
-    document.getElementById('haveRead').checked
+  editBook.addEventListener('click', function () {
+    document.getElementById('title').value = cardTitle.textContent
+    document.getElementById('author').value = cardAuthor.textContent
+    document.getElementById('pages').value = cardPages.textContent
 
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
     addEditedCard.classList.remove('no-button')
     addToTheList.classList.add('no-button')
+  })
+
+  // add edited form to card
+  addEditedCard.addEventListener('click', function () {
+    let newTitle = document.getElementById('title').value
+    let newAuthor = document.getElementById('author').value
+    let newPages = document.getElementById('pages').value
+    myLibrary.forEach(function (editedBook) {
+      if (editedBook.id === editBook.id) {
+        main.removeChild(bookCard)
+
+        let newEditedBook = new Book(newTitle, newAuthor, newPages)
+        return newEditedBook
+      }
+    })
   })
 
   //remove books from library and table one by one
@@ -170,8 +187,8 @@ let addEditedCard = document.querySelector('.edit_the_card')
 let addToTheList = document.querySelector('.addToTheList')
 
 document.querySelector('.addNewBook').addEventListener('click', () => {
-  addEditedCard.classList.add('no-button')
   showModalForm()
+  addEditedCard.classList.add('no-button')
 })
 document.querySelector('.close').addEventListener('click', showModalForm)
 
@@ -205,6 +222,3 @@ toggle.addEventListener('click', () => {
     toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'
   }
 })
-
-// add edited form to card
-addEditedCard.addEventListener('click', function () {})
