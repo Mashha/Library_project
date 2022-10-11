@@ -12,6 +12,8 @@ function Book(title, author, pages, haveRead, bookImg, id) {
 
 //div card
 let main = document.querySelector('.main-inner')
+let addEditedCard = document.querySelector('.edit_the_card')
+let currentBookId = ''
 
 function addBookToCard() {
   //cards with books
@@ -53,7 +55,7 @@ function addBookToCard() {
   cardBookImg.classList.add('imageOfBook')
   status.textContent = 'Have read '
   editBook.classList.add('fa-solid', 'fa-pen-to-square')
-  editBook.id = `${Date.now()}`
+  editBook.id = bookCard.id
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
@@ -105,6 +107,7 @@ function addBookToCard() {
 
   // edit the form
   editBook.addEventListener('click', function () {
+    currentBookId = editBook.id
     document.getElementById('title').value = cardTitle.textContent
     document.getElementById('author').value = cardAuthor.textContent
     document.getElementById('pages').value = cardPages.textContent
@@ -113,21 +116,6 @@ function addBookToCard() {
     wrapper.classList.toggle('blur')
     addEditedCard.classList.remove('no-button')
     addToTheList.classList.add('no-button')
-  })
-
-  // add edited form to card
-  addEditedCard.addEventListener('click', function () {
-    let newTitle = document.getElementById('title').value
-    let newAuthor = document.getElementById('author').value
-    let newPages = document.getElementById('pages').value
-    myLibrary.forEach(function (editedBook) {
-      if (editedBook.id === editBook.id) {
-        main.removeChild(bookCard)
-
-        let newEditedBook = new Book(newTitle, newAuthor, newPages)
-        return newEditedBook
-      }
-    })
   })
 
   //remove books from library and table one by one
@@ -142,8 +130,33 @@ function addBookToCard() {
   })
 }
 
+// add edited form to card
+addEditedCard.addEventListener('click', function (e) {
+  e.preventDefault()
+
+  let newTitle = document.getElementById('title').value
+  let newAuthor = document.getElementById('author').value
+  let newPages = document.getElementById('pages').value
+
+  myLibrary = myLibrary.map(function (editedBook) {
+    if (editedBook.id === currentBookId) {
+      document.getElementById(`${currentBookId}`).remove()
+
+      addBookToCard(editedBook)
+
+      let newEditedBook = new Book(newTitle, newAuthor, newPages)
+      return newEditedBook
+    }
+
+    modal.classList.toggle('active')
+    wrapper.classList.toggle('blur')
+  })
+})
+
+let form = document.querySelector('form')
+form.id = currentBookId
 //add new book on button click
-document.querySelector('form').addEventListener('submit', function (e) {
+form.addEventListener('submit', function (e) {
   //prevent from submitting
   e.preventDefault()
 
@@ -183,12 +196,11 @@ document.querySelector('form').addEventListener('submit', function (e) {
 //open/close the modal
 let modal = document.querySelector('.modal-form')
 let wrapper = document.querySelector('.wrapper')
-let addEditedCard = document.querySelector('.edit_the_card')
 let addToTheList = document.querySelector('.addToTheList')
 
 document.querySelector('.addNewBook').addEventListener('click', () => {
-  showModalForm()
   addEditedCard.classList.add('no-button')
+  showModalForm()
 })
 document.querySelector('.close').addEventListener('click', showModalForm)
 

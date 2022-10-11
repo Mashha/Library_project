@@ -323,6 +323,7 @@ footer p {
   display: none;
 }
 
+
 /* active class */
 .modal-form.active {
   visibility: visible;
