@@ -31,7 +31,7 @@ function addBookToCard() {
   bookCard.classList.add('card')
   bookCardLeft.classList.add('card-left')
   bookCardRight.classList.add('card-right')
-  bookCard.id = `${Date.now()}`
+  bookCard.id = currentBookId
   editDeleteStatus.classList.add('editDeleteStatus')
 
   let removeBook = document.createElement('button')
@@ -111,6 +111,7 @@ function addBookToCard() {
     document.getElementById('title').value = cardTitle.textContent
     document.getElementById('author').value = cardAuthor.textContent
     document.getElementById('pages').value = cardPages.textContent
+    
 
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
@@ -138,19 +139,21 @@ addEditedCard.addEventListener('click', function (e) {
   let newAuthor = document.getElementById('author').value
   let newPages = document.getElementById('pages').value
 
-  myLibrary = myLibrary.map(function (editedBook) {
+  myLibrary.map(function (editedBook) {
     if (editedBook.id === currentBookId) {
       document.getElementById(`${currentBookId}`).remove()
 
       addBookToCard(editedBook)
-
+      
+      
       let newEditedBook = new Book(newTitle, newAuthor, newPages)
-      return newEditedBook
+      Object.assign(editedBook, newEditedBook)
+      
     }
-
-    modal.classList.toggle('active')
-    wrapper.classList.toggle('blur')
   })
+
+  modal.classList.toggle('active')
+  wrapper.classList.toggle('blur')
 })
 
 let form = document.querySelector('form')
@@ -168,6 +171,7 @@ form.addEventListener('submit', function (e) {
   let bookUrl = document.getElementById('imgUrl').value
 
   let idValue = `${Date.now()}`
+  currentBookId = idValue
   //add new book
   let newBook = new Book(
     titleValue,
