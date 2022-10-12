@@ -13,9 +13,21 @@ function Book(title, author, pages, haveRead, bookImg, id) {
 //div card
 let main = document.querySelector('.main-inner')
 let addEditedCard = document.querySelector('.edit_the_card')
-let currentBookId = ''
+let currentId = 0
 
-function addBookToCard() {
+function loopOverAndDisplay() {
+  //remove objects from the list
+  let cardItem = document.querySelectorAll('.card')
+  cardItem.forEach((item) => {
+    item.remove()
+  })
+  for (let i = 0; i < myLibrary.length; i++) {
+    myLibrary[i].id = i
+    addBookToCard(myLibrary[i])
+  }
+}
+
+function addBookToCard(libraryBook) {
   //cards with books
   let bookCard = document.createElement('div')
   let bookCardLeft = document.createElement('div')
@@ -31,8 +43,9 @@ function addBookToCard() {
   bookCard.classList.add('card')
   bookCardLeft.classList.add('card-left')
   bookCardRight.classList.add('card-right')
-  bookCard.id = currentBookId
   editDeleteStatus.classList.add('editDeleteStatus')
+  bookCard.id = libraryBook.id
+  currentId = libraryBook.id
 
   let removeBook = document.createElement('button')
   let cardTitle = document.createElement('h1')
@@ -48,14 +61,13 @@ function addBookToCard() {
   cardAuthor.classList.add('cardAuthorClass')
   cardPages.classList.add('cardPagesClass')
 
-  cardTitle.textContent = title.value
-  cardAuthor.textContent = author.value
-  cardPages.textContent = pages.value
+  cardTitle.textContent = libraryBook.title
+  cardAuthor.textContent = libraryBook.author
+  cardPages.textContent = libraryBook.pages
   removeBook.classList.add('fa-regular', 'fa-trash-can')
   cardBookImg.classList.add('imageOfBook')
   status.textContent = 'Have read '
   editBook.classList.add('fa-solid', 'fa-pen-to-square')
-  editBook.id = bookCard.id
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
@@ -107,11 +119,10 @@ function addBookToCard() {
 
   // edit the form
   editBook.addEventListener('click', function () {
-    currentBookId = editBook.id
     document.getElementById('title').value = cardTitle.textContent
     document.getElementById('author').value = cardAuthor.textContent
     document.getElementById('pages').value = cardPages.textContent
-    
+    currentId = libraryBook.id
 
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
@@ -123,7 +134,8 @@ function addBookToCard() {
   removeBook.addEventListener('click', function (bookCard) {
     myLibrary = myLibrary.filter(
       (bookCard) =>
-        bookCard.id !== this.parentElement.parentElement.parentElement.id,
+        bookCard.id !==
+        parseInt(this.parentElement.parentElement.parentElement.id),
     )
     if (bookCard.id === Object.id) {
       this.parentElement.parentElement.parentElement.remove()
@@ -138,26 +150,29 @@ addEditedCard.addEventListener('click', function (e) {
   let newTitle = document.getElementById('title').value
   let newAuthor = document.getElementById('author').value
   let newPages = document.getElementById('pages').value
+  let newReadBook = document.getElementById('haveRead').checked
+  let newBookUrl = document.getElementById('imgUrl').value
 
-  myLibrary.map(function (editedBook) {
-    if (editedBook.id === currentBookId) {
-      document.getElementById(`${currentBookId}`).remove()
-
-      addBookToCard(editedBook)
-      
-      
-      let newEditedBook = new Book(newTitle, newAuthor, newPages)
+  myLibrary.forEach(function (editedBook) {
+    if (editedBook.id === currentId) {
+      let newEditedBook = new Book(
+        newTitle,
+        newAuthor,
+        newPages,
+        newReadBook,
+        newBookUrl,
+        currentId,
+      )
       Object.assign(editedBook, newEditedBook)
-      
     }
   })
-
+  loopOverAndDisplay()
   modal.classList.toggle('active')
   wrapper.classList.toggle('blur')
 })
 
 let form = document.querySelector('form')
-form.id = currentBookId
+form.id = currentId
 //add new book on button click
 form.addEventListener('submit', function (e) {
   //prevent from submitting
@@ -170,8 +185,6 @@ form.addEventListener('submit', function (e) {
   let haveReadBook = document.getElementById('haveRead').checked
   let bookUrl = document.getElementById('imgUrl').value
 
-  let idValue = `${Date.now()}`
-  currentBookId = idValue
   //add new book
   let newBook = new Book(
     titleValue,
@@ -179,13 +192,12 @@ form.addEventListener('submit', function (e) {
     pagesNum,
     haveReadBook,
     bookUrl,
-    idValue,
   )
-
-  addBookToCard(newBook)
 
   // push a book to array
   myLibrary.push(newBook)
+
+  loopOverAndDisplay()
 
   //close the modal and remove the blur effect
   modal.classList.toggle('active')

@@ -218,7 +218,6 @@ form input {
 
 /* remove arrows for numbers */
 input[type='number'] {
-  -moz-appearance: textfield;
   appearance: textfield;
 }
 input::-webkit-outer-spin-button,
@@ -323,6 +322,10 @@ footer p {
 
 .no-button {
   display: none;
+}
+
+.display-button {
+  display: block;
 }
 
 
