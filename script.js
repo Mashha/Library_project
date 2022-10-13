@@ -83,12 +83,14 @@ function addBookToCard(libraryBook) {
   bookCardLeft.appendChild(cardBookImg)
 
   //add image
-  let imageBookForCard = document.getElementById('imgUrl').value
-  if (imageBookForCard === '') {
-    cardBookImg.setAttribute('src', 'images/mock_cover.svg')
-  } else {
-    cardBookImg.setAttribute('src', imageBookForCard)
-  }
+  cardBookImg.id = libraryBook.id
+  myLibrary.forEach(function (book) {
+    if (book.bookImg === "" && book.id === parseInt(cardBookImg.id)) {
+      cardBookImg.setAttribute('src', 'images/mock_cover.svg')
+    } else if (book.bookImg !== '' && book.id === parseInt(cardBookImg.id)) {
+      cardBookImg.setAttribute('src', book.bookImg)
+    }
+  })
 
   //add icon to haveRead
   let checkBox = document.getElementById('haveRead')
@@ -124,10 +126,11 @@ function addBookToCard(libraryBook) {
     document.getElementById('pages').value = cardPages.textContent
     currentId = libraryBook.id
 
-    modal.classList.toggle('active')
-    wrapper.classList.toggle('blur')
     addEditedCard.classList.remove('no-button')
     addToTheList.classList.add('no-button')
+
+    modal.classList.toggle('active')
+    wrapper.classList.toggle('blur')
   })
 
   //remove books from library and table one by one
@@ -216,6 +219,7 @@ let addToTheList = document.querySelector('.addToTheList')
 
 document.querySelector('.addNewBook').addEventListener('click', () => {
   addEditedCard.classList.add('no-button')
+  addToTheList.classList.remove('no-button')
   showModalForm()
 })
 document.querySelector('.close').addEventListener('click', showModalForm)

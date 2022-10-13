@@ -324,10 +324,6 @@ footer p {
   display: none;
 }
 
-.display-button {
-  display: block;
-}
-
 
 /* active class */
 .modal-form.active {
