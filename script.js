@@ -34,8 +34,8 @@ function addBookToCard(libraryBook) {
   let bookCardRight = document.createElement('div')
   let statusDetails = document.createElement('div')
   let editDeleteStatus = document.createElement('div')
-  let authorDetails = document.createElement("div")
-  let pageStatus = document.createElement("div")
+  let authorDetails = document.createElement('div')
+  let pageStatus = document.createElement('div')
 
   // main, left and right part
   main.appendChild(bookCard)
@@ -46,8 +46,8 @@ function addBookToCard(libraryBook) {
   bookCardLeft.classList.add('card-left')
   bookCardRight.classList.add('card-right')
   editDeleteStatus.classList.add('editDeleteStatus')
-  authorDetails.classList.add("author-div")
-  pageStatus.classList.add("page-status")
+  authorDetails.classList.add('author-div')
+  pageStatus.classList.add('page-status')
   bookCard.id = libraryBook.id
   currentId = libraryBook.id
 
@@ -59,13 +59,14 @@ function addBookToCard(libraryBook) {
   let cardBookImg = document.createElement('img')
   let status = document.createElement('span')
   let editBook = document.createElement('span')
-  let byAuthor = document.createElement("span")
-  let pagesTitle = document.createElement("span")
+  let byAuthor = document.createElement('span')
+  let pagesTitle = document.createElement('span')
 
   //added classes
   cardTitle.classList.add('cardTitleClass')
   cardAuthor.classList.add('cardAuthorClass')
   cardPages.classList.add('cardPagesClass')
+  cardHaveRead.classList.add('card-have-read')
 
   cardTitle.textContent = libraryBook.title
   cardAuthor.textContent = libraryBook.author
@@ -74,8 +75,8 @@ function addBookToCard(libraryBook) {
   cardBookImg.classList.add('imageOfBook')
   status.textContent = 'Have read '
   editBook.classList.add('fa-solid', 'fa-pen-to-square')
-  byAuthor.textContent = `${"By"}`
-  pagesTitle.textContent = `${"Pages:"}`
+  byAuthor.textContent = `${'By'}`
+  pagesTitle.textContent = `${'Pages:'}`
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
@@ -99,7 +100,7 @@ function addBookToCard(libraryBook) {
   //add image
   cardBookImg.id = libraryBook.id
   myLibrary.forEach(function (book) {
-    if (book.bookImg === "" && book.id === parseInt(cardBookImg.id)) {
+    if (book.bookImg === '' && book.id === parseInt(cardBookImg.id)) {
       cardBookImg.setAttribute('src', 'images/mock_cover.svg')
     } else if (book.bookImg !== '' && book.id === parseInt(cardBookImg.id)) {
       cardBookImg.setAttribute('src', book.bookImg)

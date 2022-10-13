@@ -263,8 +263,7 @@ input[type='checkbox'] {
   transform: translateY(-0.25em);
 }
 
-.close,
-span {
+.close {
   cursor: pointer;
 }
 
@@ -294,6 +293,11 @@ span {
 .editDeleteStatus {
   display: flex;
   justify-content: space-between;
+}
+
+.editDeleteStatus span,
+.card-have-read {
+  cursor: pointer;
 }
 
 .author-div {
