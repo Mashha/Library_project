@@ -34,6 +34,8 @@ function addBookToCard(libraryBook) {
   let bookCardRight = document.createElement('div')
   let statusDetails = document.createElement('div')
   let editDeleteStatus = document.createElement('div')
+  let authorDetails = document.createElement("div")
+  let pageStatus = document.createElement("div")
 
   // main, left and right part
   main.appendChild(bookCard)
@@ -44,17 +46,21 @@ function addBookToCard(libraryBook) {
   bookCardLeft.classList.add('card-left')
   bookCardRight.classList.add('card-right')
   editDeleteStatus.classList.add('editDeleteStatus')
+  authorDetails.classList.add("author-div")
+  pageStatus.classList.add("page-status")
   bookCard.id = libraryBook.id
   currentId = libraryBook.id
 
   let removeBook = document.createElement('button')
   let cardTitle = document.createElement('h1')
   let cardAuthor = document.createElement('h4')
-  let cardPages = document.createElement('p')
+  let cardPages = document.createElement('span')
   let cardHaveRead = document.createElement('span')
   let cardBookImg = document.createElement('img')
   let status = document.createElement('span')
   let editBook = document.createElement('span')
+  let byAuthor = document.createElement("span")
+  let pagesTitle = document.createElement("span")
 
   //added classes
   cardTitle.classList.add('cardTitleClass')
@@ -68,6 +74,8 @@ function addBookToCard(libraryBook) {
   cardBookImg.classList.add('imageOfBook')
   status.textContent = 'Have read '
   editBook.classList.add('fa-solid', 'fa-pen-to-square')
+  byAuthor.textContent = `${"By"}`
+  pagesTitle.textContent = `${"Pages:"}`
 
   statusDetails.appendChild(status)
   statusDetails.appendChild(cardHaveRead)
@@ -75,10 +83,16 @@ function addBookToCard(libraryBook) {
   editDeleteStatus.appendChild(editBook)
   editDeleteStatus.appendChild(removeBook)
 
+  authorDetails.appendChild(byAuthor)
+  authorDetails.appendChild(cardAuthor)
+
+  pageStatus.appendChild(pagesTitle)
+  pageStatus.appendChild(cardPages)
+
   bookCardRight.appendChild(editDeleteStatus)
   bookCardRight.appendChild(cardTitle)
-  bookCardRight.appendChild(cardAuthor)
-  bookCardRight.appendChild(cardPages)
+  bookCardRight.appendChild(authorDetails)
+  bookCardRight.appendChild(pageStatus)
   bookCardRight.appendChild(statusDetails)
   bookCardLeft.appendChild(cardBookImg)
 
