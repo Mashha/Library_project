@@ -216,6 +216,12 @@ form input {
   color: #b9b9b9;
 }
 
+.span-up {
+  transform: translateY(-120%);
+  font-size: 14px;
+  color: #b9b9b9;
+}
+
 /* remove arrows for numbers */
 input[type='number'] {
   appearance: textfield;

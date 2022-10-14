@@ -139,6 +139,7 @@ function addBookToCard(libraryBook) {
     document.getElementById('title').value = cardTitle.textContent
     document.getElementById('author').value = cardAuthor.textContent
     document.getElementById('pages').value = cardPages.textContent
+    document.getElementById('imgUrl').value = cardBookImg.src
     currentId = libraryBook.id
 
     addEditedCard.classList.remove('no-button')
@@ -187,6 +188,9 @@ addEditedCard.addEventListener('click', function (e) {
   loopOverAndDisplay()
   modal.classList.toggle('active')
   wrapper.classList.toggle('blur')
+
+  //clear the input fields
+ clearTheInputFields()
 })
 
 let form = document.querySelector('form')
@@ -222,9 +226,7 @@ form.addEventListener('submit', function (e) {
   wrapper.classList.toggle('blur')
 
   //clear the input fields
-  document.querySelectorAll('input').forEach((node) => {
-    node.value = ''
-  })
+ clearTheInputFields()
 })
 
 //open/close the modal
@@ -236,6 +238,7 @@ document.querySelector('.addNewBook').addEventListener('click', () => {
   addEditedCard.classList.add('no-button')
   addToTheList.classList.remove('no-button')
   showModalForm()
+  spanOnInput()
 })
 document.querySelector('.close').addEventListener('click', showModalForm)
 
@@ -269,3 +272,21 @@ toggle.addEventListener('click', () => {
     toggle.innerHTML = '<i class="fa-solid fa-moon"></i>'
   }
 })
+
+//push span up when input is full
+document.getElementById('imgUrl').addEventListener('blur', spanOnInput)
+
+function spanOnInput() {
+  if (document.getElementById('imgUrl').value !== '') {
+    document.querySelector('.img-name').classList.add('span-up')
+  } else {
+    document.querySelector('.img-name').classList.remove('span-up')
+  }
+}
+
+//clear the input fields
+function clearTheInputFields() {
+  document.querySelectorAll('input').forEach((node) => {
+    node.value = ''
+  })
+}
