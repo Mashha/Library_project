@@ -140,6 +140,7 @@ function addBookToCard(libraryBook) {
     document.getElementById('author').value = cardAuthor.textContent
     document.getElementById('pages').value = cardPages.textContent
     document.getElementById('imgUrl').value = cardBookImg.src
+    document.getElementById('haveRead').checked
     currentId = libraryBook.id
 
     addEditedCard.classList.remove('no-button')
