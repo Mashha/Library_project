@@ -10,9 +10,9 @@ function Book(title, author, pages, haveRead, bookImg, id) {
   this.id = id
 }
 
-//div card
 let main = document.querySelector('.main-inner')
 let addEditedCard = document.querySelector('.edit_the_card')
+//id
 let currentId = 0
 
 function loopOverAndDisplay() {
@@ -147,6 +147,7 @@ function addBookToCard(libraryBook) {
 
     modal.classList.toggle('active')
     wrapper.classList.toggle('blur')
+    spanOnInput()
   })
 
   //remove books from library and table one by one
@@ -190,7 +191,7 @@ addEditedCard.addEventListener('click', function (e) {
   wrapper.classList.toggle('blur')
 
   //clear the input fields
- clearTheInputFields()
+  clearTheInputFields()
 })
 
 let form = document.querySelector('form')
@@ -226,10 +227,10 @@ form.addEventListener('submit', function (e) {
   wrapper.classList.toggle('blur')
 
   //clear the input fields
- clearTheInputFields()
+  clearTheInputFields()
 })
 
-//open/close the modal
+//open/close the modal + blur
 let modal = document.querySelector('.modal-form')
 let wrapper = document.querySelector('.wrapper')
 let addToTheList = document.querySelector('.addToTheList')
@@ -237,8 +238,9 @@ let addToTheList = document.querySelector('.addToTheList')
 document.querySelector('.addNewBook').addEventListener('click', () => {
   addEditedCard.classList.add('no-button')
   addToTheList.classList.remove('no-button')
-  showModalForm()
+  clearTheInputFields()
   spanOnInput()
+  showModalForm()
 })
 document.querySelector('.close').addEventListener('click', showModalForm)
 
