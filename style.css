@@ -383,6 +383,7 @@ footer p {
     padding: 10px 5px;
   }
   .modal-form {
+    position: absolute;
     top: 30%;
     left: 0;
     right: 0;
