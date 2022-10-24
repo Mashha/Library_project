@@ -24,6 +24,6 @@ What i would like to add and improve:
 - additional info on how many books are stored
 - improve the design
 
-##Source
+## Source
 This project is a part of the Odin Project bootcamp, where i got the instructions, the logic of the implementation and the design are both mine. 
 https://www.theodinproject.com/lessons/node-path-javascript-library
