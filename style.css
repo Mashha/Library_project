@@ -27,6 +27,13 @@ body {
   background-color: var(--background);
 }
 
+.wrapper {
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 #header {
   background-color: var(--primary-bg-color);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
@@ -84,7 +91,6 @@ body {
 
 #main {
   display: grid;
-  height: calc(100vh - 135px);
   padding: 20px;
 }
 
@@ -359,6 +365,14 @@ footer p {
 
 /* media queries */
 
+@media (max-width: 950px){
+  .main-inner{
+    width: 95%;
+    justify-items: center;
+  }
+}
+
+
 @media (max-width: 800px) {
   .header-inner h1 {
     font-size: 20px;
@@ -368,6 +382,10 @@ footer p {
     left: 0;
     right: 0;
     margin: auto;
+  }
+
+  .main-inner {
+    width: 100%;
   }
 }
 
