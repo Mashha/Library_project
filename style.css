@@ -82,6 +82,19 @@ body {
   transform: translateY(-0.25em);
 }
 
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.clear-all{
+   border-radius: 20px;
+   border: none;
+   padding: 5px 10px;
+   cursor: pointer;
+   color: var(--primary-bg-color);
+}
+
 #logIn {
   color: var(--primary-text-color);
   border: none;

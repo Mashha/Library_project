@@ -255,18 +255,19 @@ function showModalForm() {
 }
 
 //clear cards and array
-// let clearAll = document.querySelector('.clear-all')
+let clearAll = document.querySelector('.clear-all')
 
-// clearAll.addEventListener('click', () => {
-//   //remove items from array
-//   myLibrary.splice(0, myLibrary.length)
-
-//   //remove objects from the list
-//   let cardItem = document.querySelectorAll('.card')
-//   cardItem.forEach((item) => {
-//     item.remove()
-//   })
-// })
+clearAll.addEventListener('click', () => {
+  //remove items from array
+  myLibrary.splice(0, myLibrary.length)
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  
+  //remove objects from the list
+  let cardItem = document.querySelectorAll('.card')
+  cardItem.forEach((item) => {
+    item.remove()
+  })
+})
 
 //added light/dark body background
 let toggle = document.querySelector(".toggleDark");
